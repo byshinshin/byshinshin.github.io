@@ -1,9 +1,165 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Shinta</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shinta Permata Sari — Coming soon</title>
+<meta name="description" content="Shinta Permata Sari, software engineer working on middleware, APIs, and system integration. A new site is on the way.">
+<meta name="robots" content="noindex, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F8F7;
+    --card:#FFFFFF;
+    --ink:#10231F;
+    --teal:#0E5E56;
+    --teal-deep:#083F3A;
+    --teal-tint:#EAF3F1;
+    --amber:#E8A33D;
+    --amber-tint:#FCF1DD;
+    --mist:#5F736E;
+    --line:#D7E0DD;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+    --sans:'IBM Plex Sans',system-ui,sans-serif;
+    --disp:'Bricolage Grotesque',var(--sans);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:16px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    min-height:100dvh;display:grid;place-items:center;
+    padding:40px 22px;position:relative;overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:radial-gradient(720px 500px at 50% 4%,rgba(14,94,86,.075),transparent 72%);
+  }
+  a{color:inherit;text-decoration:none}
+
+  .plate{position:relative;z-index:1;width:100%;max-width:620px;text-align:center}
+
+  /* ---------- signature: a connection drawing itself, over and over ---------- */
+  .trace{width:min(300px,80%);height:auto;margin:0 auto 34px;display:block;overflow:visible}
+  .trace .rail{fill:none;stroke:var(--line);stroke-width:1.6}
+  .trace .live{
+    fill:none;stroke:var(--teal);stroke-width:2.2;stroke-linecap:round;
+    stroke-dasharray:300;stroke-dashoffset:300;
+    animation:draw 5s cubic-bezier(.66,0,.34,1) infinite;
+  }
+  @keyframes draw{
+    0%{stroke-dashoffset:300}
+    52%{stroke-dashoffset:0}
+    82%{stroke-dashoffset:0;opacity:1}
+    100%{stroke-dashoffset:0;opacity:0}
+  }
+  .trace .node{fill:var(--paper);stroke:var(--line);stroke-width:1.6}
+  .trace .node.on{stroke:var(--teal);animation:lit 5s ease-in-out infinite}
+  .trace .node.n1{animation-delay:0s}
+  .trace .node.n2{animation-delay:.8s}
+  .trace .node.n3{animation-delay:2.1s}
+  @keyframes lit{
+    0%,4%{fill:var(--paper);stroke:var(--line)}
+    10%,80%{fill:var(--teal);stroke:var(--teal)}
+    100%{fill:var(--paper);stroke:var(--line)}
+  }
+
+  /* ---------- type ---------- */
+  .status{
+    display:inline-flex;align-items:center;gap:9px;margin:0 0 22px;
+    padding:6px 14px 6px 11px;border-radius:999px;
+    background:var(--amber-tint);border:1px solid #EFD3A0;
+    font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:#8A6215;
+  }
+  .status i{
+    width:7px;height:7px;border-radius:50%;background:var(--amber);
+    box-shadow:0 0 0 0 rgba(232,163,61,.6);animation:pulse 2.2s ease-out infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(232,163,61,.55)}
+    70%{box-shadow:0 0 0 9px rgba(232,163,61,0)}
+    100%{box-shadow:0 0 0 0 rgba(232,163,61,0)}
+  }
+
+  h1{
+    margin:0;font-family:var(--disp);font-weight:800;
+    font-size:clamp(40px,8.4vw,72px);line-height:1.0;letter-spacing:-.03em;
+  }
+  h1 .b{display:block;color:var(--teal)}
+
+  .role{
+    margin:18px 0 0;font-family:var(--mono);font-size:12.5px;
+    letter-spacing:.06em;color:var(--teal-deep);
+  }
+  .lede{
+    margin:20px auto 0;font-size:17px;color:var(--mist);max-width:44ch;
+  }
+
+  /* ---------- contact ---------- */
+  .cta{
+    display:inline-flex;align-items:center;gap:10px;margin:32px 0 0;
+    padding:13px 22px;border-radius:10px;background:var(--teal);color:#fff;
+    font-family:var(--mono);font-size:13.5px;
+    transition:background .18s ease,transform .18s ease,box-shadow .18s ease;
+  }
+  .cta:hover{background:var(--teal-deep);transform:translateY(-1px);box-shadow:0 10px 24px rgba(8,63,58,.18)}
+  .cta:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+  .cta .arrow{transition:transform .18s ease}
+  .cta:hover .arrow{transform:translateX(3px)}
+
+  .meta{
+    margin:30px auto 0;padding-top:20px;border-top:1px solid var(--line);
+    max-width:420px;display:flex;flex-wrap:wrap;justify-content:center;
+    align-items:center;gap:9px 18px;
+    font-family:var(--mono);font-size:12.5px;color:var(--mist);
+  }
+  .meta a{border-bottom:1px solid var(--line);padding-bottom:2px;transition:color .18s,border-color .18s}
+  .meta a:hover{color:var(--teal);border-color:var(--teal)}
+  .meta a:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:3px}
+
+  @media (max-width:520px){
+    .lede{font-size:16px}
+    .trace{margin-bottom:28px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .trace .live{stroke-dashoffset:0}
+    .trace .node.on{fill:var(--teal);stroke:var(--teal)}
+  }
+</style>
 </head>
 <body>
-  <h1>Welcome</h1>
+  <main class="plate">
+
+    <svg class="trace" viewBox="0 0 300 74" role="img"
+         aria-label="An abstract line connecting three points, drawing itself">
+      <path class="rail" d="M14 56 H86 Q102 56 102 40 V32 Q102 16 118 16 H182 Q198 16 198 32 V40 Q198 56 214 56 H286"/>
+      <path class="live" d="M14 56 H86 Q102 56 102 40 V32 Q102 16 118 16 H182 Q198 16 198 32 V40 Q198 56 214 56 H286"/>
+      <circle class="node on n1" cx="14"  cy="56" r="5.5"/>
+      <circle class="node on n2" cx="150" cy="16" r="5.5"/>
+      <circle class="node on n3" cx="286" cy="56" r="5.5"/>
+    </svg>
+
+    <p class="status"><i aria-hidden="true"></i>Coming soon</p>
+
+    <h1>Shinta<span class="b">Permata Sari</span></h1>
+    <p class="role">Software Engineer &middot; Jakarta, Indonesia</p>
+
+    <p class="lede">I build the middleware and APIs that let separate systems talk to each other. A proper home for that work is on its way.</p>
+
+    <a class="cta" href="https://shintaps.com/portofolio/">
+      See My Portofolio <span class="arrow" aria-hidden="true">&rarr;</span>
+    </a>
+
+    <div class="meta">
+      <span>shintaps.com</span>
+      <a href="mailto:shintaps.work@gmail.com">shintaps.work@gmail.com</a>
+      <a href="https://www.linkedin.com/in/shintaps09" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </main>
 </body>
 </html>
